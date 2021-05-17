@@ -29,7 +29,8 @@ def signupuser(request):
       return render(request, 'todo/signupuser.html', {'form':UserCreationForm(), 'error':"Password did not match"})
 
 def currenttodos(request):
-  return render(request, 'todo/currenttodos.html')
+  user_todos = Todo.objects.filter(owner=request.user, conclusion_date__isnull=True)
+  return render(request, 'todo/currenttodos.html',{'todos':user_todos})
 
 def logoutuser(request):
   if request.method == 'POST':
