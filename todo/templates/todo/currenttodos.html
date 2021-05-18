@@ -6,11 +6,11 @@ This is the user todo
 <ul>
   {% for todo in todos %}
   
-  {% if todo.important%} <b> {% endif %} <li>{{todo}}  {% if todo.important%} </b> {% endif %}
+  {% if todo.important%} <b> {% endif %} <li> <a href="{% url 'viewtodo' todo.id %}">{{todo}}</a>  {% if todo.important%} </b> {% endif %}
   {% if todo.memo %} -- {{todo.memo}} {% endif %} </li>
 
   {% endfor %}
 </ul>
-<a href="{% url 'createtodo' %}">Create Todo</a>
+
 
 {% endblock %}
