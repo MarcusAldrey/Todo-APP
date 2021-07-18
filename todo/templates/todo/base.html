@@ -5,7 +5,7 @@ Logged in as {{ user.username }}
 <a href="{% url 'currenttodos' %}">My Todos</a>
 <a href="{% url 'completedtodos' %}">Completed Todos</a>
 
-<form action="{% url 'logoutuser' %}" method="POST">
+<form action="{% url 'logoutuser' %}" method="POST"> <br/>
   {% csrf_token %}
 <button type="submit">Logout</button>
 </form>

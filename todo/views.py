@@ -33,7 +33,6 @@ def signupuser(request):
     else:
       return render(request, 'todo/signupuser.html', {'form':UserCreationForm(), 'error':"Password did not match"})
 
-@login_required
 def loginuser(request):
   if request.method == 'GET':
     return render(request, 'todo/login.html', {'form':AuthenticationForm()})
