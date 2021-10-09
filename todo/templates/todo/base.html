@@ -1,40 +1,42 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
+{% load static %}
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="{% static 'todo/style.css' %}">
   <title>Simple To-do</title>
 </head>
 
-
-
 <body>
 
- 
+  {% if user.is_authenticated %}
+
+  Logged in as {{ user.username }}
+  <a href=" {% url 'createtodo' %}">Create Todo</a>
+  <a href="{% url 'currenttodos' %}">My Todos</a>
+  <a href="{% url 'completedtodos' %}">Completed Todos</a>
+
+  <form action="{% url 'logoutuser' %}" method="POST"> <br />
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+  </form>
+
+  {% endif %}
+
+
+  {% block content %}
+
+  {% endblock %}
+
 </body>
+
 </html>
-
-{% if user.is_authenticated %}
-
-Logged in as {{ user.username }}
-<a href="{% url 'createtodo' %}">Create Todo</a>
-<a href="{% url 'currenttodos' %}">My Todos</a>
-<a href="{% url 'completedtodos' %}">Completed Todos</a>
-
-<form action="{% url 'logoutuser' %}" method="POST"> <br/>
-  {% csrf_token %}
-<button type="submit">Logout</button>
-</form>
-{% else %}
-
-<a href="{% url 'signupuser' %}">Signup</a>
-<a href="{% url 'loginuser' %}">login</a>
-
-{% endif %}
-
-{% block content %}
-
-{% endblock %}

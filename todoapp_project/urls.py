@@ -13,25 +13,24 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 from todo import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.home, name='home'),
-    path('create/', views.createtodo, name='createtodo'),
-    path('current/', views.currenttodos, name='currenttodos'),
-    path('current/', views.currenttodos, name='currenttodos'),
-    path('todo/<int:todo_pk>', views.viewtodo,name='viewtodo'),
-    path('todo/<int:todo_pk>/complete', views.completetodo,name='complete'),
-    path('todo/<int:todo_pk>/delete', views.deletetodo,name='deletetodo'),
-    path('completed/', views.completedtodos,name='completedtodos'),
-    
-    # Auth 
-    path('signup/', views.signupuser, name='signupuser'),
-    path('logout/', views.logoutuser, name='logoutuser'),
-    path('login/', views.loginuser, name='loginuser'),
-
-    
-]
+    path("admin/", admin.site.urls),
+    path("", views.home, name="home"),
+    path("create/", views.createtodo, name="createtodo"),
+    path("current/", views.currenttodos, name="currenttodos"),
+    path("current/", views.currenttodos, name="currenttodos"),
+    path("todo/<int:todo_pk>", views.viewtodo, name="viewtodo"),
+    path("todo/<int:todo_pk>/complete", views.completetodo, name="complete"),
+    path("todo/<int:todo_pk>/delete", views.deletetodo, name="deletetodo"),
+    path("completed/", views.completedtodos, name="completedtodos"),
+    # Auth
+    path("signup/", views.signupuser, name="signupuser"),
+    path("logout/", views.logoutuser, name="logoutuser"),
+    path("login/", views.loginuser, name="loginuser"),
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
