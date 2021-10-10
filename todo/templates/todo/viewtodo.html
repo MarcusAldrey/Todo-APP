@@ -3,7 +3,7 @@
 {% block content %}
 
 {{error}}
-<div class="ms-5">
+<div class="ms-5 row">
   <h1>To-do #{{todo_item.id}}</h1>
 
   <h2>{{error}}</h2>
@@ -17,32 +17,34 @@
       <input id="username" type="text" name="title" maxlength="100" class="form-control mt-1 myform"
         value="{{todo_item.title}}" required>
       <br>
-
-
       <h5><label for="id_memo">Details:</label></h5>
-      <textarea name="memo" cols="30" rows="10" id="id_memo" class="form-control myform"></textarea>
+      <textarea name="memo" cols="30" rows="10" id="id_memo" class="form-control myform">{{todo_item.memo}}</textarea>
       <br>
 
-      <h5><label for="id_important">Important:</label><input type="checkbox" name="important" id="id_important"
-          class="form-check-input ms-3"></h5>
-
+      <h5>
+        <label for="id_important">Important:</label>
+        {% if todo_item.important %}
+        <input type="checkbox" name="important" id="id_important" class="form-check-input ms-3" value="true" checked>
+        {% else %}
+        <input type="checkbox" name="important" id="id_important" class="form-check-input ms-3" value="true">
+        {% endif %}
+      </h5>
       <br>
 
       <button type="submit" class="btn btn-lg btn-dark">Salvar alterações</button>
     </div>
   </form>
 
-  <div class="row">
-    <form method="POST" action="{% url 'complete' todo_item.id %}">
-      {% csrf_token %}
-      <button type="submit">Completar tarefa</button>
-    </form>
+  <form method="POST" action="{% url 'complete' todo_item.id %}" class="mt-2">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-lg btn-secondary">Concluir tarefa</button>
+  </form>
 
-    <form method="POST" action="{% url 'deletetodo' todo_item.id %}">
-      {% csrf_token %}
-      <button type="submit">Excluir tarefa</button>
-    </form>
-  </div>
+  <form method="POST" action="{% url 'deletetodo' todo_item.id %}" class="mt-2">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-lg btn-secondary">Excluir tarefa</button>
+  </form>
+
 </div>
 
 {% endblock %}

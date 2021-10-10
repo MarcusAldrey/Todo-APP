@@ -81,14 +81,19 @@ def viewtodo(request, todo_pk):
         return render(request, "todo/viewtodo.html", {"todo_item": todo_item})
     elif request.method == "POST":
         try:
-            form = TodoForm(request.POST, instance=todo_item)
-            form.save()
+            todo_item.title = request.POST["title"]
+            todo_item.memo = request.POST["memo"]
+            print(request.POST.get("memo"))
+            todo_item.important = (
+                True if request.POST.get("important") == "true" else False
+            )
+            todo_item.save()
             return redirect("currenttodos")
         except ValueError:
             return render(
                 request,
                 "todo/viewtodo.html",
-                {"todo_item": todo_item, "form": form, "error": "Bad data"},
+                {"todo_item": todo_item, "error": "Bad data"},
             )
 
 
