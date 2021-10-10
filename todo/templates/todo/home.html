@@ -1,20 +1,69 @@
 {% extends 'todo/base.html' %}
 
 {% block content %}
+{% load static %}
 
-
-
-<div class="card text-black w-50">
-  <div class="card-body">
-    <h1 class="card-title">Simple To-do</h1>
-    <div>
-      <h4>Organize your tasks. Get things done.</h4>
-      <br>
-      <a name="btn-login" id="btn-login" class="btn btn-lg btn-dark" href="{% url 'loginuser' %}"
-        role="button">login</a>
-      or
-      <a href="{% url 'signupuser' %}">Signup</a>
+<div class="row">
+  <div class="col-xl-6">
+    <div class="sidenav">
+      <div class="login-main-text">
+        <h1>Simple To-do</h1>
+        <br>
+        <h3>Organize your tasks. Get things done.</h3>
+        <div class="mt-5">
+          <a name="btn-login" id="btn-login" class="btn btn-lg btn-secondary me-2" href="{% url 'loginuser' %}"
+            role="button">Login</a>
+          or
+          <button href="{% url 'signupuser' %}" class="btn btn-lg btn-dark ms-2">Signup</button>
+        </div>
+      </div>
     </div>
+  </div>
+  <div class="col-xl-6">
+    <div class="line"></div>
+    <br>
+    <div class="line"></div>
+    <br>
+    <div class="line"></div>
+    <br>
+    <div class="line"></div>
+    <br>
+    <div class="line"></div>
+    <br>
+    <div class="line"></div>
+    <br>
+    <div class="line"></div>
+    <br>
+    <div class="line"></div>
+    <br>
+    <div class="line"></div>
+    <br>
+    <div class="line"></div>
+    <br>
+    <div class="line"></div>
+    <br>
+    <div class="line"></div>
+    <br>
+    <div class="line"></div>
+    <br>
+    <div class="line"></div>
+    <br>
+    <div class="line"></div>
+    <br>
+    <div class="line"></div>
+    <br>
+    <div class="line"></div>
+    <br>
+    <div class="line"></div>
+    <br>
+    <div class="line"></div>
+    <br>
+    <div class="line"></div>
+    <br>
+    <div class="line"></div>
+    <br>
+    <div class="line"></div>
+    <br>
   </div>
 </div>
 

@@ -44,16 +44,19 @@ def signupuser(request):
 
 def loginuser(request):
     if request.method == "GET":
-        context = {"form": AuthenticationForm()}
-        return render(request, "todo/login.html", context)
+        return render(request, "todo/login.html")
     else:
         user = authenticate(
             request,
-            username=request.POST["username"],
-            password=request.POST["password"],
+            username=request.POST.get("username"),
+            password=request.POST.get("password"),
         )
+        print(request.POST.get("username"))
         if user is None:
-            context = {"form": AuthenticationForm(), "error": "Erro ao logar"}
+            context = {
+                "form": AuthenticationForm(),
+                "error": "This username is not registered.",
+            }
             return render(request, "todo/login.html", context)
         else:
             login(request, user)

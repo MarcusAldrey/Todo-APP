@@ -20,8 +20,8 @@
 
   {% if user.is_authenticated %}
 
-  Logged in as {{ user.username }}
-  <a href=" {% url 'createtodo' %}">Create Todo</a>
+  <h2 class="m-5">Welcome, {{ user.username }}.</h2>
+
   <a href="{% url 'currenttodos' %}">My Todos</a>
   <a href="{% url 'completedtodos' %}">Completed Todos</a>
 
