@@ -1,9 +1,14 @@
 {% extends 'todo/base.html' %}
+{% load static %}
 
 {% block content %}
 
-<div class="ms-5">
-  <h1>New Todo</h1>
+<div class="ms-5 me-5">
+  <div class="d-flex">
+    <a href="{% url 'currenttodos' %}"><img src=" {% static 'todo/arrow-left-square-fill.svg' %}" alt="left arrow icon"
+        height="50px" class="me-4"></a>
+    <h1>New to-do</h1>
+  </div>
 
   <h2>{{error}}</h2>
 

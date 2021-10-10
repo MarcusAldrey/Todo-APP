@@ -1,11 +1,15 @@
 {% extends 'todo/base.html' %}
+{% load static %}
 
 {% block content %}
 
 {{error}}
-<div class="ms-5 row">
-  <h1>To-do #{{todo_item.id}}</h1>
-
+<div class="ms-5 row col-md-9 me-5">
+  <div class="d-flex">
+    <a href="{% url 'currenttodos' %}"><img src=" {% static 'todo/arrow-left-square-fill.svg' %}" alt="left arrow icon"
+        height="50px" class="me-4"></a>
+    <h1>View to-do</h1>
+  </div>
   <h2>{{error}}</h2>
 
   <form method="POST">

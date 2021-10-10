@@ -20,13 +20,25 @@
 
   {% if user.is_authenticated %}
 
-  <form action="{% url 'logoutuser' %}" method="POST" class="me-5 mt-3 d-flex flex-row-reverse"> <br />
-    {% csrf_token %}
-    <button class="btn btn-lg btn-dark ms-2" type="submit">Logout</button>
-    <div class="mt-2">
-      <h5>Welcome, {{user}}</h5>
+  <div class="d-flex flex-row-reverse me-3">
+
+    <div class="row">
+
+      <div class="col">
+        <div class="mt-4">
+          <h5>Logged in as {{user}}</h5>
+        </div>
+      </div>
+
+      <div class="col">
+        <form action="{% url 'logoutuser' %}" method="POST"> <br />
+          {% csrf_token %}
+          <button class="btn btn-lg btn-dark ms-2" type="submit">Logout</button>
+        </form>
+      </div>
+
     </div>
-  </form>
+  </div>
 
   {% endif %}
 
