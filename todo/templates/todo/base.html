@@ -20,14 +20,12 @@
 
   {% if user.is_authenticated %}
 
-  <h2 class="m-5">Welcome, {{ user.username }}.</h2>
-
-  <a href="{% url 'currenttodos' %}">My Todos</a>
-  <a href="{% url 'completedtodos' %}">Completed Todos</a>
-
-  <form action="{% url 'logoutuser' %}" method="POST"> <br />
+  <form action="{% url 'logoutuser' %}" method="POST" class="me-5 mt-3 d-flex flex-row-reverse"> <br />
     {% csrf_token %}
-    <button type="submit">Logout</button>
+    <button class="btn btn-lg btn-dark ms-2" type="submit">Logout</button>
+    <div class="mt-2">
+      <h5>Welcome, {{user}}</h5>
+    </div>
   </form>
 
   {% endif %}

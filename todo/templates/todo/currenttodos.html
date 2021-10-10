@@ -1,20 +1,31 @@
 {% extends 'todo/base.html' %}
 
 {% block content %}
-This is the user todo
 
+<div class="ms-5">
 
-<ul>
-  {% for todo in todos %}
+  <h1>Your to-do list: </h1>
 
-  {% if todo.important%} <b> {% endif %} <li> <a href="{% url 'viewtodo' todo.id %}">{{todo}}</a> {% if todo.important%}
-  </b> {% endif %}
-  {% if todo.memo %} -- {{todo.memo}} {% endif %} </li>
+  <div class="list-group col-xl-6 col-md-12 w-50 mt-4">
 
-  {% endfor %}
-</ul>
+    {% for todo in todos %}
 
-<button href="{% url 'createtodo' %}" class="btn btn-dark">Create todo</button>
+    <a href="{% url 'viewtodo' todo.id %}" class="list-group-item list-group-item-action" aria-current="true">
+      {{todo}}
+    </a>
 
+    {% empty %}
+
+    <h5>Nice! You are done for today.</h5>
+
+    {% endfor %}
+
+  </div>
+
+  <br>
+  <a name="btn-create" id="btn-create" class="btn btn-lg btn-dark mt-2" href="{% url 'createtodo' %}" role="button">New
+    to-do</a>
+
+</div>
 
 {% endblock %}

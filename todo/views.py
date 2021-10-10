@@ -51,7 +51,6 @@ def loginuser(request):
             username=request.POST.get("username"),
             password=request.POST.get("password"),
         )
-        print(request.POST.get("username"))
         if user is None:
             context = {
                 "form": AuthenticationForm(),
@@ -79,10 +78,7 @@ def currenttodos(request):
 def viewtodo(request, todo_pk):
     todo_item = get_object_or_404(Todo, id=todo_pk, owner=request.user)
     if request.method == "GET":
-        form = TodoForm(instance=todo_item)
-        return render(
-            request, "todo/viewtodo.html", {"todo_item": todo_item, "form": form}
-        )
+        return render(request, "todo/viewtodo.html", {"todo_item": todo_item})
     elif request.method == "POST":
         try:
             form = TodoForm(request.POST, instance=todo_item)

@@ -3,20 +3,46 @@
 {% block content %}
 
 {{error}}
-<form method="POST">
-{% csrf_token %}
-{{form.as_p}}
-<button type="submit">Salvar alterações</button>
-</form>
+<div class="ms-5">
+  <h1>To-do #{{todo_item.id}}</h1>
 
-<form method="POST" action="{% url 'complete' todo_item.id %}">
-  {% csrf_token %}
-  <button type="submit">Completar tarefa</button>
-</form>
+  <h2>{{error}}</h2>
 
-<form method="POST" action="{% url 'deletetodo' todo_item.id %}">
-  {% csrf_token %}
-  <button type="submit">Excluir tarefa</button>
-</form>
+  <form method="POST">
+    {% csrf_token %}
+
+    <div class="col-xl-6 mt-4">
+
+      <h5><label>Title:</label></h5>
+      <input id="username" type="text" name="title" maxlength="100" class="form-control mt-1 myform"
+        value="{{todo_item.title}}" required>
+      <br>
+
+
+      <h5><label for="id_memo">Details:</label></h5>
+      <textarea name="memo" cols="30" rows="10" id="id_memo" class="form-control myform"></textarea>
+      <br>
+
+      <h5><label for="id_important">Important:</label><input type="checkbox" name="important" id="id_important"
+          class="form-check-input ms-3"></h5>
+
+      <br>
+
+      <button type="submit" class="btn btn-lg btn-dark">Salvar alterações</button>
+    </div>
+  </form>
+
+  <div class="row">
+    <form method="POST" action="{% url 'complete' todo_item.id %}">
+      {% csrf_token %}
+      <button type="submit">Completar tarefa</button>
+    </form>
+
+    <form method="POST" action="{% url 'deletetodo' todo_item.id %}">
+      {% csrf_token %}
+      <button type="submit">Excluir tarefa</button>
+    </form>
+  </div>
+</div>
 
 {% endblock %}

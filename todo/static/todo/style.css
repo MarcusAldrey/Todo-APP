@@ -1,9 +1,14 @@
 body {
   font-family: 'Lato', sans-serif;
+  background-color: #f8f9fa;
 }
 
-h1 {
+#main-title {
   font-size: 50px;
+}
+
+.list-group-item {
+  padding: 25px 10px;
 }
 
 .myform {
