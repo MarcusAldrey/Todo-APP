@@ -25,7 +25,7 @@ SECRET_KEY = "%l@n*s_%+uga^ljbx+rkm)))t_&p&jd*n@l+$gn#944!m=wjhc"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1","obscure-crag-30514.herokuapp.com"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "obscure-crag-30514.herokuapp.com"]
 
 
 # Application definition
@@ -125,4 +125,4 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "todo/"),
 ]
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
