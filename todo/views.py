@@ -18,27 +18,25 @@ def home(request):
 
 def signupuser(request):
     if request.method == "GET":
-        context = {"form": UserCreationForm()}
-        return render(request, "todo/signupuser.html", context)
+        return render(request, "todo/signupuser.html")
 
     elif request.method == "POST":
-        if request.POST["password1"] == request.POST["password2"]:
+        if request.POST["password"] == request.POST["passwordconfirmation"]:
             try:
                 user = User.objects.create_user(
-                    request.POST["username"], password=request.POST["password1"]
+                    request.POST["username"],
+                    password=request.POST["password"],
+                    email=request.POST["email"],
                 )
                 user.save()
                 login(request, user)
                 return redirect("currenttodos")
 
             except (IntegrityError, ValueError):
-                context = {
-                    "form": UserCreationForm(),
-                    "error": "username already been taken",
-                }
+                context = {"error": "Username already been taken"}
                 return render(request, "todo/signupuser.html", context)
         else:
-            context = {"form": UserCreationForm(), "error": "Password did not match"}
+            context = {"error": "Password did not match"}
             return render(request, "todo/signupuser.html", context)
 
 
