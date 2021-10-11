@@ -25,14 +25,14 @@
 
     {% empty %}
 
-    <h5>Nice! You are done for today.</h5>
+    <h5>You have no tasks.</h5>
 
     {% endfor %}
 
   </div>
 
   <br>
-  <a name="btn-create" id="btn-create" class="btn btn-lg btn-dark mt-2" href="{% url 'createtodo' %}" role="button">New
+  <a name="btn-create" id="btn-create" class="btn btn-lg btn-dark mt-2" href="{% url 'createtodo' %}" role="button">Add
     to-do</a>
 
 </div>

@@ -28,6 +28,9 @@ def signupuser(request):
                     password=request.POST["password"],
                     email=request.POST["email"],
                 )
+                if User.objects.filter(email=request.POST["email"]).exists():
+                    context = {"error": "Email already been registered"}
+                    return render(request, "todo/signupuser.html", context)
                 user.save()
                 login(request, user)
                 return redirect("currenttodos")
