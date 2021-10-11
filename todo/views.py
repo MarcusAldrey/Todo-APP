@@ -1,6 +1,5 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.shortcuts import get_object_or_404, redirect, render
@@ -8,8 +7,6 @@ from django.utils import timezone
 
 from todo.forms import TodoForm
 from todo.models import Todo
-
-# Create your views here.
 
 
 def home(request):
@@ -46,17 +43,14 @@ def signupuser(request):
 def loginuser(request):
     if request.method == "GET":
         return render(request, "todo/login.html")
-    else:
+    elif request.method == "POST":
         user = authenticate(
             request,
             username=request.POST.get("username"),
             password=request.POST.get("password"),
         )
         if user is None:
-            context = {
-                "form": AuthenticationForm(),
-                "error": "This username is not registered.",
-            }
+            context = {"error": "This username is not registered"}
             return render(request, "todo/login.html", context)
         else:
             login(request, user)

@@ -1,4 +1,5 @@
 {% extends 'todo/base.html' %}
+{% load static %}
 
 {% block content %}
 
@@ -6,7 +7,12 @@
   <div class="login-form">
     <form method="POST">
       {% csrf_token %}
-      <h1 class="mb-2">Signup</h1>
+
+      <div class="d-flex">
+        <a href="{% url 'home' %}"><img src=" {% static 'todo/arrow-left-square-fill.svg' %}" alt="left arrow icon"
+            height="50px" class="me-2 w-50"></a>
+        <h1 class="mb-4">Signup</h1>
+      </div>
 
       {% if error %}
       <br>
