@@ -8,7 +8,7 @@ This project is available at https://obscure-crag-30514.herokuapp.com
 Make sure you have Python 3 and pip installed.
 - Clone this repository.
 - Create virtualenv with Python 3.
-- Active the virtualenv.
+- Activate the virtualenv.
 - Install dependences.
 - Run the migrations.
 - Run the server.
