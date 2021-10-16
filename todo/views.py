@@ -10,7 +10,10 @@ from todo.models import Todo
 
 
 def home(request):
-    return render(request, "todo/home.html")
+    if request.user.is_authenticated:
+        return redirect("currenttodos")
+    else:
+        return render(request, "todo/home.html")
 
 
 def signupuser(request):
